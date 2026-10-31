@@ -1,0 +1,32 @@
+[package]
+name = "alloy"
+version = "0.1.0"
+edition = "2021"
+authors = ["Wikialisalabs Foundation <root@wikialisalabs.axvn.vn>"]
+description = "Alloy meta-crate — unified entry point for the Wikialisalabs EVM stack with Tower middleware"
+license = "Apache-2.0"
+repository = "https://github.com/wikialisalabs/alloy"
+keywords = ["ethereum", "evm", "alloy", "tower", "middleware"]
+categories = ["cryptography::cryptocurrencies", "network-programming"]
+readme = "README.md"
+
+[features]
+default = ["std", "core", "evm", "eips"]
+std     = []
+core    = ["dep:alloy-core"]
+evm     = ["dep:alloy-evm"]
+evm2    = ["dep:alloy-evm2"]
+trie    = ["dep:alloy-trie"]
+eips    = ["dep:alloy-eips"]
+op      = ["dep:op-alloy"]
+svm     = ["dep:svm-rs"]
+full    = ["core", "evm", "evm2", "trie", "eips", "op", "svm"]
+
+[dependencies]
+alloy-core = { path = "../core",     optional = true }
+alloy-evm  = { path = "../evm",      optional = true }
+alloy-evm2 = { path = "../evm2",     optional = true }
+alloy-trie = { path = "../trie",     optional = true }
+alloy-eips = { path = "../eips",     optional = true }
+op-alloy   = { path = "../op-alloy", optional = true }
+svm-rs     = { path = "../svm-rs",   optional = true }
